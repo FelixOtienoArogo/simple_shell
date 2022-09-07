@@ -22,6 +22,7 @@ i = 0;
 token = malloc(sizeof(char *) * n);/*the tokens */
 
 /*this is for determining the outcome*/
+
 for (j = 0; j < len + 1; j++)
 {
 if (lineptr[j] == ' ')
@@ -35,9 +36,9 @@ token[i] = strtok_r(lineptr, "\r\n", &lineptr);
 break;
 }
 }
-while (token[i] == NULL)
+while (token[i] != NULL)
 {
-token[i + 1] = strtok_r(NULL, " \0", &lineptr);
+token[i + 1] = strtok_r(NULL, "\r\n", &lineptr);
 i++;
 }
 return (token);
