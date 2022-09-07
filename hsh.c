@@ -20,13 +20,11 @@ len = strlen(lineptr);
 n = 255;
 i = 0;
 token = malloc(sizeof(char *) * n);/*the tokens */
-if(token == NULL)
+if (token == NULL)
 {
 perror("Error:");
 }
-
 /*this is for determining the outcome*/
-
 for (j = 0; j < len + 1; j++)
 {
 if (lineptr[j] == ' ')
@@ -66,10 +64,6 @@ while (1)
 {
 n = 255;
 lineptr = malloc(sizeof(char) * n);/*the input string*/
-if(lineptr == NULL)
-{
-perror("Error:");
-}
 
 /*getting the input*/
 printf("($) ");
