@@ -20,6 +20,10 @@ len = strlen(lineptr);
 n = 255;
 i = 0;
 token = malloc(sizeof(char *) * n);/*the tokens */
+if(token == NULL)
+{
+perror("Error:");
+}
 
 /*this is for determining the outcome*/
 
@@ -55,6 +59,7 @@ int main(void)
 {
 char *lineptr;
 size_t n;
+int l;
 char **token;
 pid_t child_pid;
 
@@ -62,11 +67,17 @@ while (1)
 {
 n = 255;
 lineptr = malloc(sizeof(char) * n);/*the input string*/
+if(lineptr == NULL)
+{
+perror("Error:");
+}
 
 /*getting the input*/
 printf("($) ");
-getline(&lineptr, &n, stdin);
+l = getline(&lineptr, &n, stdin);
 
+if(l == -1)
+exit(0);
 if (strncmp(lineptr, "exit", strlen("exit")) == 0)
 exit(0);
 /* forking */
@@ -84,6 +95,8 @@ if (execvp(token[0], (char * const *)token) == -1)
 {
 perror("Error:");
 }
+if (EOF)
+return (0);
 }
 /*free everything allocated */
 free(lineptr);
