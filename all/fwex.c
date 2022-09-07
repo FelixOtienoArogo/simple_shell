@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+
+/**
+ * main - execve example
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+  pid_t child_pid;
+  int i, n;
+  for (i = 0; i < 5; i++)
+    {
+    printf("FORKING NOW *********??????????\n");
+    child_pid = fork();
+    if (child_pid == -1)
+    {
+        perror("Error:");
+        return (1);
+    }
+    if (child_pid == 0)
+      {
+    char *argv[] = {"/bin/ls", "-l", "/tmp/", NULL};
+
+    printf("Before execve\n");
+    n = execve(argv[0], argv, NULL);
+    if (n == -1)
+    {
+        perror("Error:");
+    }
+    }
+    wait(NULL);
+    }
+    printf("After execve\n");
+    return (0);
+}

@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+/**
+ *main - to text my own getline
+ *
+ *Return: Always 0
+ *
+ */
+int main(void)
+{
+  char *lineptr;
+  size_t n;
+  n = 255;
+  lineptr = malloc(sizeof(char) * n);
+  printf("$ ");
+  getline(&lineptr, &n, stdin);
+  printf("%s", lineptr);
+  free(lineptr);
+  return(0);
+}
