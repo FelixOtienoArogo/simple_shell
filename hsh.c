@@ -66,6 +66,8 @@ lineptr = malloc(sizeof(char) * n);/*the input string*/
 printf("($) ");
 getline(&lineptr, &n, stdin);
 
+if (strncmp(lineptr, "exit", sizeof("exit")))
+exit(0);
 /* forking */
 child_pid = fork();
 if (child_pid == -1)
