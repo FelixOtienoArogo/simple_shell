@@ -38,7 +38,8 @@ break;
 }
 while (token[i] != NULL)
 {
-token[i + 1] = strtok_r(NULL, "\r\n", &lineptr);
+token[i + 1] = strtok_r(NULL, " \r\n", &lineptr);
+
 i++;
 }
 return (token);
