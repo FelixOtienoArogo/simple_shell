@@ -71,7 +71,8 @@ printf("($) ");
 getline(&lineptr, &n, stdin);
 
 if (strncmp(lineptr, "exit", strlen("exit")) == 0)
-exit_group(0);
+kill(0, SIGKILL);
+
 /* forking */
 child_pid = fork();
 if (child_pid == -1)
