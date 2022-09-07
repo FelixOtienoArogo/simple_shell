@@ -4,6 +4,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <linux/unistd.h>
 
 /**
  *tokenner - for splitting the given string into tokens
@@ -70,7 +71,7 @@ printf("($) ");
 getline(&lineptr, &n, stdin);
 
 if (strncmp(lineptr, "exit", strlen("exit")) == 0)
-exit(0);
+exit_group(0);
 /* forking */
 child_pid = fork();
 if (child_pid == -1)
